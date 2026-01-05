@@ -148,7 +148,6 @@ const APP = {
 
         API.dataroom.list()
             .done(function(datarooms) {
-              console.log('Loaded data rooms:', datarooms);
                 APP.dataroomList = datarooms;
                 APP.renderDataRoomList(datarooms);
             })
@@ -560,8 +559,16 @@ const APP = {
         $('.download-file-btn').off('click').on('click', function(e) {
             e.stopPropagation();
             const fileId = $(this).data('id');
-            // Navigate directly to download endpoint - the browser will handle the download
-            window.location.href = API_BASE_URL + '/files/' + fileId + '/download';
+            API.file.createShare(fileId, {})
+                .done(function(share) {
+                    // Display the share link
+                    const shareUrl = API.file.getShareDownloadUrl(share.token);
+                    window.location.href = shareUrl;
+                })
+                .fail(function(error) {
+                    APP.showAlert('Failed to create share', 'error');
+                    console.error('Error creating share:', error);
+                });
         });
 
         // Share file (newly added)

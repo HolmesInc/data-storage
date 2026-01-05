@@ -7,7 +7,7 @@ from alembic import context
 
 # Import our models and database configuration
 import sys
-sys.path.insert(0, '.')
+sys.path.insert(0, '')
 from database import Base
 from models import DataRoom, Folder, File, FileShare
 from settings import DATABASE_URL

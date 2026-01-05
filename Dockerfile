@@ -13,20 +13,17 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy requirements file
-COPY backend/requirements.txt .
+COPY requirements.txt .
 
 # Install Python dependencies
 RUN pip install --upgrade pip && \
     pip install -r requirements.txt
 
 # Copy application code
-COPY backend/ ./backend/
+COPY . .
 
 # Create uploads directory
-RUN mkdir -p backend/uploads
-
-# Change to backend directory
-WORKDIR /app/backend
+RUN mkdir -p uploads
 
 # Create entrypoint script
 RUN echo '#!/bin/bash\nset -e\necho "Running database migrations..."\nalembic upgrade head\necho "Migrations completed!"\necho "Starting FastAPI server..."\nuvicorn main:app --host 0.0.0.0 --port 8000' > /entrypoint.sh && \
