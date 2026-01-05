@@ -52,3 +52,10 @@ uvicorn main:app --reload
 
 The backend docs (Swagger) will be available at `http://127.0.0.1:8000/api/docs`
 
+## Running Tests
+
+### Run all tests
+```bash
+python -m pytest tests/
+```
+
