@@ -33,6 +33,7 @@ function getBackendUrl() {
 }
 
 const BACKEND_URL = getBackendUrl();
+console.log('Using backend URL for app operations:', BACKEND_URL);
 
 /**
  * Authentication helper

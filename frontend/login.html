@@ -201,42 +201,8 @@
         </div>
     </div>
 
+    <script src="js/auth.js"></script>
     <script>
-        // Authentication module
-        const AUTH = {
-            apiBaseUrl: 'http://localhost:8000/api/v0',
-
-            login: function(username, password) {
-                return $.ajax({
-                    url: this.apiBaseUrl + '/auth/login',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        username: username,
-                        password: password
-                    })
-                });
-            },
-
-            storeToken: function(token) {
-                localStorage.setItem('authToken', token);
-            },
-
-            getToken: function() {
-                return localStorage.getItem('authToken');
-            },
-
-            logout: function() {
-                localStorage.removeItem('authToken');
-                window.location.href = 'login.html';
-            },
-
-            isLoggedIn: function() {
-                return !!this.getToken();
-            }
-        };
-
         // Handle login form submission
         $('#loginForm').on('submit', function(e) {
             e.preventDefault();
@@ -299,4 +265,3 @@
     </script>
 </body>
 </html>
-

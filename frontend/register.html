@@ -247,31 +247,8 @@
             </div>
         </div>
     </div>
-
+    <script src="js/auth.js"></script>
     <script>
-        // Authentication module
-        const AUTH = {
-            apiBaseUrl: 'http://localhost:8000/api/v0',
-
-            register: function(email, username, password) {
-                return $.ajax({
-                    url: this.apiBaseUrl + '/auth/register',
-                    type: 'POST',
-                    contentType: 'application/json',
-                    dataType: 'json',
-                    data: JSON.stringify({
-                        email: email,
-                        username: username,
-                        password: password
-                    })
-                });
-            },
-
-            storeToken: function(token) {
-                localStorage.setItem('authToken', token);
-            }
-        };
-
         // Password strength checker
         function checkPasswordStrength(password) {
             let strength = 0;
