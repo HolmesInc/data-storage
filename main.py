@@ -17,6 +17,7 @@ from settings import (
     CORS_ALLOW_METHODS,
     CORS_ALLOW_HEADERS,
     UPLOADS_DIRECTORY,
+    STATIC_DIRECTORY,
 )
 
 
@@ -70,7 +71,7 @@ app.add_middleware(
 
 # Mount static files directory for serving uploaded files
 # This allows clients to download files from /uploads/ URL
-app.mount("/uploads", StaticFiles(directory=UPLOADS_DIRECTORY), name="uploads")
+app.mount("/uploads", StaticFiles(directory=UPLOADS_DIRECTORY), name=UPLOADS_DIRECTORY)
 
 
 # Define API endpoints BEFORE mounting static files
@@ -89,7 +90,5 @@ def health_check():
 # This makes all the endpoints defined in routes.py available
 app.include_router(api_router)
 
-# Serve static frontend files LAST
-# Mount at root with html=True to serve index.html for SPA routing
-static_dir = os.path.join(os.path.dirname(__file__), "static")
-app.mount("/", StaticFiles(directory=static_dir, html=True), name="static")
+# Serve static frontend files
+app.mount("/", StaticFiles(directory=STATIC_DIRECTORY, html=True), name=STATIC_DIRECTORY)

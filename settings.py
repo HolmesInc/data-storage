@@ -59,9 +59,10 @@ CORS_ALLOW_METHODS = ["*"]
 CORS_ALLOW_HEADERS = ["*"]
 
 # -------------------------------------------------------------------------------------------------------------------
-# FILE UPLOAD SETTINGS
+# STATIC SETTINGS
 # -------------------------------------------------------------------------------------------------------------------
 UPLOADS_DIRECTORY = "uploads"
+STATIC_DIRECTORY = os.path.join(os.path.dirname(__file__), "frontend")
 
 # Create uploads directory if it doesn't exist
 if not os.path.exists(UPLOADS_DIRECTORY):
