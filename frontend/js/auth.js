@@ -1,19 +1,10 @@
-// Dynamic backend URL detection (same logic as api.js)
-// TODO: use the common logic (with api.js) instead of duplicating it here
-function getBackendUrl() {
-  if (window.location.port === '5001') {
-    return 'http://localhost:8000';
-  }
-  return window.location.protocol + '//' + window.location.host;
-}
-
-const BACKEND_URL = getBackendUrl();
-console.log('Using backend URL for login/register:', BACKEND_URL);
-
-
 // Authentication module
 const AUTH = {
-  apiBaseUrl: BACKEND_URL + '/api/v0',
+  apiBaseUrl: BACKEND_URL + API_BASE_URL,
+
+  init: function() {
+    this.setupLogout();
+  },
 
   login: function(username, password) {
     return $.ajax({
@@ -42,6 +33,25 @@ const AUTH = {
     });
   },
 
+  setupLogout: function() {
+    $('#logoutBtn').click(function(e) {
+      e.preventDefault();
+      Swal.fire({
+        title: 'Logout?',
+        text: 'Are you sure you want to logout?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc3545',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, logout'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          AUTH.logout();
+        }
+      });
+    });
+  },
+
   storeToken: function(token) {
     localStorage.setItem('authToken', token);
   },
@@ -57,5 +67,22 @@ const AUTH = {
 
   isLoggedIn: function() {
     return !!this.getToken();
+  },
+
+  getAuthHeader: function() {
+    const token = this.getToken();
+    if (token) {
+      return 'Bearer ' + token;
+    }
+    return null;
+  },
+
+  // Check if 401 error means auth failed
+  checkAuthError: function(jqXHR) {
+    if (jqXHR.status === 401) {
+      this.logout();
+      return true;
+    }
+    return false;
   }
 };
