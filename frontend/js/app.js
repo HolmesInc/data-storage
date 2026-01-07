@@ -1,7 +1,7 @@
 /**
- * Data Room Application
+ * Data Drive Application
  *
- * Main application logic for the jQuery-based Data Room frontend.
+ * Main application logic for the jQuery-based Data Drive frontend.
  * Handles user interactions, UI updates, and communication with the API.
  */
 
@@ -17,7 +17,7 @@ const APP = {
    * Runs when the page loads
    */
   init: function() {
-    console.log('🚀 Initializing Data Room Application...');
+    console.log('🚀 Initializing Data Drive Application...');
 
     // Check authentication first
     if (!AUTH.isLoggedIn()) {
@@ -1021,7 +1021,7 @@ const APP = {
    */
   deleteDataRoom: function(dataroomId) {
     Swal.fire({
-      title: 'Delete Data Room?',
+      title: 'Delete Drive?',
       text: 'All folders and files will be deleted. This action cannot be undone.',
       icon: 'warning',
       showCancelButton: true,
@@ -1032,7 +1032,7 @@ const APP = {
       if (result.isConfirmed) {
         API.dataroom.delete(dataroomId)
           .done(function() {
-            APP.showAlert('Data room deleted successfully!', 'success');
+            APP.showAlert('Drive deleted successfully!', 'success');
             APP.loadDataRooms();
             $('#contentArea').html('<div class="alert alert-info"><i class="fas fa-arrow-left"></i> Select a Data Room to get started</div>');
           })

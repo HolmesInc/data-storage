@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Room - Document Management System</title>
+    <title>Data Drive - Save Your Data</title>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -27,7 +27,7 @@
     <nav class="navbar navbar-dark bg-primary sticky-top">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">
-                <i class="fas fa-file-cabinet"></i> Data Room
+                <i class="fas fa-file-cabinet"></i> Data Drive
             </span>
             <div class="nav-item d-flex gap-2">
                 <span class="text-white d-flex align-items-center me-3">
@@ -51,7 +51,7 @@
             <div class="col-lg-3">
                 <div class="card h-100">
                     <div class="card-header bg-primary text-white">
-                        <h5 class="mb-0"><i class="fas fa-server me-2"></i> Data Rooms</h5>
+                        <h5 class="mb-0"><i class="fas fa-server me-2"></i> Drives</h5>
                     </div>
                     <div class="card-body overflow-auto" id="dataroomList" style="max-height: 70vh;">
                         <div class="spinner-border spinner-border-sm" role="status">
@@ -60,7 +60,7 @@
                     </div>
                     <div class="card-footer border-top">
                         <button class="btn btn-sm btn-success w-100" data-bs-toggle="modal" data-bs-target="#createDataRoomModal">
-                            <i class="fas fa-plus"></i> New Data Room
+                            <i class="fas fa-plus"></i> New Drive
                         </button>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
             <div class="col-lg-9">
                 <div id="contentArea">
                     <div class="alert alert-info text-center">
-                        <i class="fas fa-arrow-left"></i> Select a Data Room to get started
+                        <i class="fas fa-arrow-left"></i> Select a Drive to get started
                     </div>
                 </div>
             </div>
@@ -82,13 +82,13 @@
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="createDataRoomLabel"><i class="fas fa-folder-plus me-2"></i> Create New Data Room</h5>
+                    <h5 class="modal-title" id="createDataRoomLabel"><i class="fas fa-folder-plus me-2"></i> Create New Drive</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <form id="createDataRoomForm">
                         <div class="mb-3">
-                            <label for="dataroomName" class="form-label">Data Room Name <span class="text-danger">*</span></label>
+                            <label for="dataroomName" class="form-label">Drive Name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" id="dataroomName" placeholder="e.g., Q4 2024 Acquisition" required>
                         </div>
                         <div class="mb-3">
