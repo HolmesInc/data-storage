@@ -9,7 +9,7 @@ from alembic import context
 import sys
 sys.path.insert(0, '')
 from database import Base
-from models import DataRoom, Folder, File, FileShare
+from models import DataRoom, Folder, File, FileShare, User, StorageGateway, TelegramGateway
 from settings import DATABASE_URL
 
 # this is the Alembic Config object, which provides

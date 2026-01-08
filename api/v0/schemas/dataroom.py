@@ -1,9 +1,3 @@
-"""
-Pydantic Schemas Module
-
-Pydantic schemas define the structure of data sent to and from the API.
-They provide data validation and automatic documentation in Swagger.
-"""
 from pydantic import BaseModel, Field
 from typing import Optional, List
 from datetime import datetime

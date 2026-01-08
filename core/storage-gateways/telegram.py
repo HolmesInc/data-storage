@@ -11,10 +11,10 @@ async def main() -> None:
     # message = file
     text_file = BufferedInputFile(b"Hello, world!", filename="file.txt")
 
-    async with Bot(
-        token=TELEGRAM_BOT_ACCESS_TOKEN,
-        default=DefaultBotProperties(
-            parse_mode=ParseMode.HTML,
-        ),
-    ) as bot:
-        await bot.send_message(chat_id=chat_id, text=message)
+    # async with Bot(
+    #     token=TELEGRAM_BOT_ACCESS_TOKEN,
+    #     default=DefaultBotProperties(
+    #         parse_mode=ParseMode.HTML,
+    #     ),
+    # ) as bot:
+    #     await bot.send_message(chat_id=chat_id, text=message)

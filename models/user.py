@@ -2,6 +2,7 @@ from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy.orm import relationship
 from database import Base
+from .enums import StorageGatewayType
 
 
 class User(Base):
@@ -28,3 +29,21 @@ class User(Base):
 
     # Relationship: one User has many DataRooms
     datarooms = relationship("DataRoom", back_populates="owner", cascade="all, delete-orphan")
+
+    # Relationship: one User has many Storage Gateways
+    storage_gateways = relationship(
+        "StorageGateway",
+        back_populates="owner",
+        cascade="all, delete-orphan"
+    )
+
+    @property
+    def gateways_by_type(self):
+        return {gateway.type: gateway for gateway in self.storage_gateways}
+
+    @property
+    def telegram_gateway(self):
+        gateway = self.gateways_by_type.get(
+            StorageGatewayType.TELEGRAM
+        )
+        return gateway.telegram_gateway if gateway else None
