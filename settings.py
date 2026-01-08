@@ -1,6 +1,7 @@
 import os
 import logging
 from typing import List
+from pathlib import Path
 
 # -------------------------------------------------------------------------------------------------------------------
 # DATABASE SETTINGS
@@ -66,8 +67,10 @@ CORS_ALLOW_HEADERS = ["*"]
 # -------------------------------------------------------------------------------------------------------------------
 # STATIC SETTINGS
 # -------------------------------------------------------------------------------------------------------------------
-UPLOADS_DIRECTORY = "uploads"
-STATIC_DIRECTORY = os.path.join(os.path.dirname(__file__), "frontend")
+BASE_DIR = Path(os.path.join(os.path.dirname(__file__)))
+UPLOADS_DIRECTORY = BASE_DIR / "uploads"
+FRONTEND_DIRECTORY = BASE_DIR / "frontend"
+STATIC_DIRECTORY = FRONTEND_DIRECTORY / "static"
 
 # Create uploads directory if it doesn't exist
 if not os.path.exists(UPLOADS_DIRECTORY):

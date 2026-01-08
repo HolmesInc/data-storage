@@ -1,9 +1,9 @@
-import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from contextlib import asynccontextmanager
 from api.router import api_router
+from views.router import html_router
 from logger import logger
 from settings import (
     API_TITLE,
@@ -90,5 +90,8 @@ def health_check():
 # This makes all the endpoints defined in routes.py available
 app.include_router(api_router)
 
+# Add HTML pages routes
+app.include_router(html_router)
+
 # Serve static frontend files
-app.mount("/", StaticFiles(directory=STATIC_DIRECTORY, html=True), name=STATIC_DIRECTORY)
+app.mount("/", StaticFiles(directory=STATIC_DIRECTORY), name=STATIC_DIRECTORY)

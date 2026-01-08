@@ -17,7 +17,7 @@ from models import (
     Folder,
     User
 )
-from dependencies import get_current_user
+from api.dependencies import get_current_user
 from api.v0.schemas import folder as folder_schemas
 
 router = APIRouter(prefix="/folders")

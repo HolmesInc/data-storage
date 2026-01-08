@@ -21,7 +21,7 @@ const APP = {
 
     // Check authentication first
     if (!AUTH.isLoggedIn()) {
-      window.location.href = 'login.html';
+      window.location.href = 'login';
       return;
     }
 
@@ -1048,7 +1048,7 @@ const APP = {
 // Initialize the app when DOM is ready
 $(document).ready(function() {
   if (!AUTH.isLoggedIn()) {
-    window.location.href = 'login.html';
+    window.location.href = 'login';
     return;
   }
 

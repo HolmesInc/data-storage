@@ -9,7 +9,7 @@ from fastapi import (
 
 from database import get_db
 from models import DataRoom, User
-from dependencies import get_current_user
+from api.dependencies import get_current_user
 from api.v0.schemas import dataroom
 
 router = APIRouter(prefix="/datarooms")

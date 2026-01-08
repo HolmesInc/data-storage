@@ -12,9 +12,13 @@ from fastapi import (
     File as FastAPIFile,
     Query,
 )
+
+from api.dependencies import get_current_user
+from api.v0.schemas import file as file_schemas
 from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session
 
+from settings import UPLOADS_DIRECTORY
 from database import get_db
 from models import (
     Folder,
@@ -23,12 +27,7 @@ from models import (
     DataRoom,
     User
 )
-from dependencies import get_current_user
-from api.v0.schemas import file as file_schemas
 
-# Directory where uploaded files will be stored
-# Files are organized in subdirectories by date (yyyy/mm/dd)
-UPLOAD_DIR = "uploads"
 
 router = APIRouter(prefix="/files")
 
@@ -92,7 +91,7 @@ async def upload_file(
 
         # Create file path (organize by date)
         now = datetime.utcnow()
-        file_dir = os.path.join(UPLOAD_DIR, str(now.year), str(now.month), str(now.day))
+        file_dir = os.path.join(UPLOADS_DIRECTORY, str(now.year), str(now.month), str(now.day))
         os.makedirs(file_dir, exist_ok=True)
 
         # Generate unique filename

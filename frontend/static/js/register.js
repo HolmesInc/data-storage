@@ -69,7 +69,7 @@ const REGISTER_USER = {
             text: 'Your account has been created successfully. Redirecting to login...',
             timer: 2000,
             didClose: function() {
-              window.location.href = 'login.html';
+              window.location.href = 'login';
             }
           });
         })

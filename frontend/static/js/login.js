@@ -39,7 +39,7 @@ const LOGIN = {
             text: 'Redirecting to dashboard...',
             timer: 1500,
             didClose: function () {
-              window.location.href = 'index.html';
+              window.location.href = '/';
             }
           });
         })
