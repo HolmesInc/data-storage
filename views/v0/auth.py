@@ -9,7 +9,7 @@ router = APIRouter(prefix="", tags=["html"])
 
 
 @router.get("/login", response_class=HTMLResponse)
-async def login(request: Request):
+async def login_page(request: Request):
     """
     Render the login page.
     """
@@ -17,7 +17,7 @@ async def login(request: Request):
 
 
 @router.get("/register", response_class=HTMLResponse)
-async def register(request: Request):
+async def register_page(request: Request):
     """
     Render the registration page.
     """
