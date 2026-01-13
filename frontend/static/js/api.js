@@ -424,5 +424,53 @@ const API = {
     getShareDownloadUrl: function(token) {
       return BACKEND_URL + '/api/v0/files/share/' + token + '/download';
     }
+  },
+
+  /**
+   * User Settings Operations
+   */
+  userSettings: {
+    /**
+     * Storage Gateway Operations
+     */
+    storageGateways: {
+      /**
+       * Create Telegram Storage gateway
+       * POST /api/v0//storage-gateways/telegram
+       *
+       * @param {Object} data - telegram gateway data with telegram_chat_id
+       */
+      createTelegramGateways: function(data) {
+        return API.request({
+          url: API_BASE_URL + '/storage-gateways/telegram',
+          type: 'POST',
+          dataType: 'json',
+          contentType: 'application/json',
+          data: JSON.stringify(data)
+        });
+      },
+
+      /**
+       * Update Telegram Storage gateway
+       * PUT /api/v0/telegram
+       */
+      updateTelegramGateways: function() {
+        console.log("updateTelegramGateways called")
+      },
+
+      /**
+       * Ger Telegram Storage gateway
+       * GET /api/v0/telegram
+       */
+      getTelegramGateways: function() {
+        return API.request({
+          url: API_BASE_URL + '/storage-gateways/telegram',
+          type: 'GET',
+          dataType: 'json',
+          contentType: 'application/json',
+        });
+      },
+
+    },
   }
 };

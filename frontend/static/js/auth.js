@@ -74,7 +74,7 @@ const AUTH = {
     if (token) {
       return 'Bearer ' + token;
     }
-    return null;
+    return this.logout();
   },
 
   // Check if 401 error means auth failed

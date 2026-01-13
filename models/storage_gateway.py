@@ -1,5 +1,5 @@
 from datetime import datetime
-from sqlalchemy import Column, Integer, ForeignKey, DateTime, Enum, UniqueConstraint
+from sqlalchemy import Column, Integer, ForeignKey, DateTime, Enum, UniqueConstraint, String
 from sqlalchemy.orm import relationship, validates
 from database import Base
 from .enums import StorageGatewayType
@@ -8,11 +8,6 @@ from .enums import StorageGatewayType
 class StorageGateway(Base):
     """
     StorageGateway Model - Represents a storage gateways linked to a user.
-
-    Attrs:
-        - id: Unique identifier (primary key)
-        - owner_id: Foreign key linking to the User who owns this storage gateway
-        - created_at: Timestamp when the account was created
     """
     __tablename__ = "storage_gateway"
 
@@ -61,15 +56,11 @@ class StorageGateway(Base):
 class TelegramGateway(Base):
     """
     User Model - Represents a user account.
-
-    Attrs:
-        - id: Unique identifier (primary key)
-
-        - created_at: Timestamp when the account was created
     """
     __tablename__ = "telegram_gateway"
 
     id = Column(Integer, primary_key=True, index=True)
+    chat_id = Column(String, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
     storage_gateway_id = Column(
         Integer,

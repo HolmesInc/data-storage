@@ -15,9 +15,9 @@ from .endpoints import (
     auth,
     dataroom,
     folder,
-    file
+    file,
 )
-from .endpoints.storage_gateways import telegram
+from .endpoints.storage_gateways import router as storage_gateways
 
 # This router will have /api/v0 prefix added by the main api router
 router = APIRouter(tags=["v0"])
@@ -26,4 +26,4 @@ router.include_router(auth.router, tags=["auth"])
 router.include_router(dataroom.router, tags=["dataroom"])
 router.include_router(folder.router, tags=["folder"])
 router.include_router(file.router, tags=["file"])
-router.include_router(telegram.router, tags=["storage-gateways"])
+router.include_router(storage_gateways.router, tags=["storage-gateways"])

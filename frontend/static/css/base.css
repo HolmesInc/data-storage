@@ -4,10 +4,11 @@
  */
 
 :root {
-    --bs-primary: #0d6efd;
+    --bs-primary: #667eea;
     --bs-success: #198754;
     --bs-warning: #ffc107;
     --bs-danger: #dc3545;
+    --bs-primary-rgb: 102, 126, 234;
 }
 
 /* General Styles */
@@ -98,7 +99,7 @@ body {
     flex-grow: 1;
     cursor: pointer;
     font-weight: 500;
-    color: #0c5dd6;
+    color: #667eea;
 }
 
 .folder-name:hover {
@@ -279,4 +280,31 @@ body {
     .file-item.nested-level-3 {
         margin-left: 2.25rem;
     }
+}
+
+.auth-header h1,
+.settings-header h1{
+    color: #333;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.auth-header p,
+.settings-header p{
+    color: #666;
+    font-size: 14px;
+}
+
+.form-group,
+.settings-form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label,
+.settings-form-group label{
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+    font-size: 14px;
 }
